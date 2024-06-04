@@ -1,5 +1,5 @@
 import { unstable_cache } from 'next/cache';
-import { headers } from 'next/headers';
+import { cookies } from 'next/headers';
 import React from 'react';
 
 const getData = unstable_cache(() => {
@@ -10,11 +10,12 @@ const getData = unstable_cache(() => {
       return resp;
     })
     .catch(() => 'Error');
-});
+}, []);
 
 const CacheData = async () => {
-  headers();
+  const cookie = cookies();
   const data = await getData();
+  console.log(cookie, '@@@');
 
   return (
     <div>
