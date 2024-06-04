@@ -3,9 +3,7 @@ import { headers } from 'next/headers';
 import React from 'react';
 
 const getData = unstable_cache(() => {
-  return fetch('https://next-cache-test-nine.vercel.app/api/test', {
-    headers: { 'Content-Type': 'application/json' },
-  })
+  return fetch('https://random-data-api.com/api/v2/users')
     .then(async (res) => {
       const resp = await res.json();
 
@@ -15,13 +13,12 @@ const getData = unstable_cache(() => {
 });
 
 const CacheData = async () => {
-  const data = await getData();
-
   headers();
+  const data = await getData();
 
   return (
     <div>
-      <p>random Number:{data.data} </p>
+      <p>random Number:{data?.id || 'N/A'} </p>
     </div>
   );
 };

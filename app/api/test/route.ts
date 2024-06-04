@@ -1,3 +1,5 @@
+import { headers } from 'next/headers';
+
 const getRandomInteger = (min: number, max: number) => {
   min = Math.ceil(min);
   max = Math.floor(max);
@@ -7,6 +9,7 @@ const getRandomInteger = (min: number, max: number) => {
 
 export const dynamic = 'force-dynamic';
 export function GET() {
+  headers();
   return new Response(JSON.stringify({ data: getRandomInteger(1, 10) }), {
     headers: { 'Content-Type': 'application/json' },
   });
