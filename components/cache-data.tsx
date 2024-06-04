@@ -1,8 +1,9 @@
+import { unstable_cache } from 'next/cache';
 import { headers } from 'next/headers';
 import React from 'react';
 
-const CacheData = async () => {
-  const data = await fetch('https://next-cache-test-nine.vercel.app/api/test', {
+const getData = unstable_cache(() => {
+  return fetch('https://next-cache-test-nine.vercel.app/api/test', {
     headers: { 'Content-Type': 'application/json' },
   })
     .then(async (res) => {
@@ -11,6 +12,10 @@ const CacheData = async () => {
       return resp;
     })
     .catch(() => 'Error');
+});
+
+const CacheData = async () => {
+  const data = await getData();
 
   headers();
 
