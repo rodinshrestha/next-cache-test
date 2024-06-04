@@ -2,15 +2,19 @@ import { unstable_cache } from 'next/cache';
 import { cookies } from 'next/headers';
 import React from 'react';
 
-const getData = unstable_cache(() => {
-  return fetch('https://random-data-api.com/api/v2/users')
+const getData = () => {
+  return fetch('https://random-data-api.com/api/v2/users', {
+    next: {
+      revalidate: 600,
+    },
+  })
     .then(async (res) => {
       const resp = await res.json();
 
       return resp;
     })
     .catch(() => 'Error');
-}, []);
+};
 
 const CacheData = async () => {
   const cookie = cookies();
