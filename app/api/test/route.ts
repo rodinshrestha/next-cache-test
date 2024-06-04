@@ -5,6 +5,7 @@ const getRandomInteger = (min: number, max: number) => {
   return Math.floor(Math.random() * (max - min)) + min;
 };
 
+export const dynamic = 'force-dynamic';
 export function GET() {
   return new Response(JSON.stringify({ data: getRandomInteger(1, 10) }), {
     headers: { 'Content-Type': 'application/json' },
