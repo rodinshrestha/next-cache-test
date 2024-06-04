@@ -25,7 +25,6 @@ export function useCartCount(
   initialCount: number,
 ): [null | number, React.Dispatch<React.SetStateAction<null | number>>] {
   const context = React.useContext(CartCountContext);
-  console.log(context, '@@@@@');
   if (context === undefined) {
     throw new Error('useCartCount must be used within a CartCountProvider');
   }

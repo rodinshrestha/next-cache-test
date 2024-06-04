@@ -25,17 +25,16 @@ export default function Page() {
       <Link href="/test">Go to test page</Link>
 
       <Suspense fallback={<p>Caching test</p>}>
-        <p>cache data 1</p>
         <CacheData />
       </Suspense>
-      <Suspense fallback={<p>Caching test</p>}>
+      {/* <Suspense fallback={<p>Caching test</p>}>
         <p>cache data 2</p>
         <CacheData />
       </Suspense>
       <Suspense fallback={<p>Caching test</p>}>
         <p>cache data 3</p>
         <CacheData />
-      </Suspense>
+      </Suspense> */}
 
       <Suspense fallback={<ReviewsSkeleton />}>
         <Reviews />
