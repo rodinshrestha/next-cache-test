@@ -4,9 +4,7 @@ import React from 'react';
 
 const getData = () => {
   return fetch('https://random-data-api.com/api/v2/users', {
-    next: {
-      revalidate: 600,
-    },
+    cache: 'no-store',
   })
     .then(async (res) => {
       const resp = await res.json();
